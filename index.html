@@ -1,81 +1,395 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual de Usuario</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body{
-            font-family: Arial;
-            background-color:#f5f5f5;
-            margin:0;
-            padding:0;
-        }
+<title>Manual de Usuario | Volovan Volo POS</title>
 
-        header{
-            background:#6c63ff;
-            color:white;
-            padding:20px;
-            text-align:center;
-        }
+<style>
 
-        section{
-            background:white;
-            margin:20px;
-            padding:20px;
-            border-radius:10px;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        h2{
-            color:#6c63ff;
-        }
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    display:flex;
+}
 
-        img{
-            width:100%;
-            border-radius:10px;
-        }
-    </style>
+/* ===== SIDEBAR ===== */
+
+.sidebar{
+    width:280px;
+    height:100vh;
+    background:#2c1b12;
+    color:white;
+    position:fixed;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.sidebar img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#f3d19c;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:5px;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#5e3b28;
+}
+
+/* ===== CONTENIDO ===== */
+
+.content{
+    margin-left:300px;
+    padding:40px;
+    width:100%;
+}
+
+.section{
+    background:white;
+    padding:30px;
+    margin-bottom:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section h1{
+    color:#5e3b28;
+    margin-bottom:20px;
+}
+
+.section h2{
+    color:#8b5e3c;
+    margin-bottom:15px;
+}
+
+.section p{
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.section ul{
+    margin-left:20px;
+    margin-bottom:15px;
+}
+
+.section li{
+    margin-bottom:10px;
+}
+
+.placeholder{
+    background:#ddd;
+    height:300px;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#666;
+    margin-top:20px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+    }
+
+    .content{
+        margin-left:0;
+    }
+
+    body{
+        flex-direction:column;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
-    <h1>Manual de Usuario</h1>
-    <p>Sistema Punto de Venta</p>
-</header>
+<!-- ===== SIDEBAR ===== -->
 
-<section>
-    <h2>Inicio de Sesión</h2>
-    <p>
-        Aquí el usuario puede ingresar su correo y contraseña
-        para entrar al sistema.
-    </p>
+<div class="sidebar">
 
-    <img src="https://via.placeholder.com/800x400">
-</section>
+    <!-- CAMBIA logo.png POR EL NOMBRE DE TU IMAGEN -->
+    <img src="volo.jpg">
 
-<section>
-    <h2>Módulo de Ventas</h2>
+    <h2>Volovan Volo POS</h2>
 
-    <p>
-        En esta parte se realizan las ventas y se agregan
-        productos al carrito.
-    </p>
+    <a href="#introduccion">Introducción</a>
+    <a href="#requisitos">Requisitos mínimos</a>
+    <a href="#login">Inicio de sesión</a>
+    <a href="#menu">Menú principal</a>
+    <a href="#ventas">Módulo de ventas</a>
+    <a href="#inventario">Inventario</a>
+    <a href="#caja">Caja</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#reportes">Reportes</a>
+    <a href="#usuarios">Usuarios y permisos</a>
+    <a href="#configuracion">Configuración</a>
+    <a href="#catalogo">Catálogo web</a>
+    <a href="#problemas">Problemas comunes</a>
+    <a href="#practicas">Buenas prácticas</a>
+    <a href="#glosario">Glosario</a>
+    <a href="#creditos">Créditos</a>
 
-    <img src="https://via.placeholder.com/800x400">
-</section>
+</div>
 
-<section>
-    <h2>Configuración</h2>
+<!-- ===== CONTENIDO ===== -->
 
-    <p>
-        Aquí se configuran usuarios, negocio y tickets.
-    </p>
+<div class="content">
 
-    <img src="https://via.placeholder.com/800x400">
-</section>
+    <div class="section" id="introduccion">
+        <h1>Introducción</h1>
+
+        <p>
+            Volovan Volo POS es un sistema de punto de venta diseñado para la operación diaria de una panadería.
+        </p>
+
+        <p>
+            El sistema permite administrar ventas, inventario, clientes, caja, reportes, usuarios y tickets desde una sola plataforma.
+        </p>
+
+        <ul>
+            <li>Control de ventas y stock.</li>
+            <li>Administración de caja.</li>
+            <li>Control de clientes y créditos.</li>
+            <li>Reportes y auditoría.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="requisitos">
+        <h1>Requisitos mínimos</h1>
+
+        <ul>
+            <li>Java 21 compatible con JavaFX.</li>
+            <li>MySQL instalado.</li>
+            <li>Resolución mínima 1366x768.</li>
+            <li>Impresora térmica 58mm u 80mm.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="login">
+        <h1>Inicio de sesión</h1>
+
+        <p>
+            El usuario debe ingresar su usuario y contraseña para acceder al sistema.
+        </p>
+
+        <ul>
+            <li>Abrir Volovan Volo POS.</li>
+            <li>Ingresar usuario y contraseña.</li>
+            <li>Presionar "Iniciar Sesión".</li>
+        </ul>
+
+        <div class="placeholder">
+            Captura de pantalla Login
+        </div>
+    </div>
+
+    <div class="section" id="menu">
+        <h1>Menú principal</h1>
+
+        <p>
+            El menú principal muestra estadísticas, ventas del día, productos vendidos y accesos rápidos.
+        </p>
+
+        <ul>
+            <li>Ventas</li>
+            <li>Inventario</li>
+            <li>Clientes</li>
+            <li>Caja</li>
+            <li>Configuración</li>
+            <li>Reportes</li>
+        </ul>
+    </div>
+
+    <div class="section" id="ventas">
+        <h1>Módulo de ventas</h1>
+
+        <p>
+            Permite realizar ventas, agregar productos al carrito y procesar pagos.
+        </p>
+
+        <ul>
+            <li>Búsqueda de productos.</li>
+            <li>Control de stock.</li>
+            <li>Pagos mixtos.</li>
+            <li>Generación de tickets.</li>
+            <li>Ventas en espera.</li>
+        </ul>
+
+        <div class="placeholder">
+            Captura de pantalla Ventas
+        </div>
+    </div>
+
+    <div class="section" id="inventario">
+        <h1>Inventario</h1>
+
+        <p>
+            El módulo de inventario permite administrar productos y stock.
+        </p>
+
+        <ul>
+            <li>Alta de productos.</li>
+            <li>Ajustes de stock.</li>
+            <li>Categorías.</li>
+            <li>Exportación PDF.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="caja">
+        <h1>Caja</h1>
+
+        <p>
+            Permite controlar apertura, movimientos y cierre de caja.
+        </p>
+
+        <ul>
+            <li>Ingresos y retiros.</li>
+            <li>Corte de caja.</li>
+            <li>Conteo físico.</li>
+            <li>Historial de movimientos.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="clientes">
+        <h1>Clientes</h1>
+
+        <p>
+            Permite administrar clientes, créditos y pagos.
+        </p>
+
+        <ul>
+            <li>Registro de clientes.</li>
+            <li>Historial.</li>
+            <li>Control de adeudos.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="reportes">
+        <h1>Reportes</h1>
+
+        <p>
+            Genera reportes de ventas, inventario y caja.
+        </p>
+
+        <ul>
+            <li>Ventas.</li>
+            <li>Inventario.</li>
+            <li>Rentabilidad.</li>
+            <li>Créditos.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="usuarios">
+        <h1>Usuarios y permisos</h1>
+
+        <p>
+            El sistema permite administrar roles y permisos.
+        </p>
+
+        <ul>
+            <li>Administrador.</li>
+            <li>Supervisor.</li>
+            <li>Cajero.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="configuracion">
+        <h1>Configuración</h1>
+
+        <p>
+            Aquí se administran parámetros del negocio y del sistema.
+        </p>
+
+        <ul>
+            <li>Tickets.</li>
+            <li>Correo.</li>
+            <li>Seguridad.</li>
+            <li>Base de datos.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="catalogo">
+        <h1>Catálogo web</h1>
+
+        <p>
+            Permite sincronizar productos con el catálogo web mediante Supabase.
+        </p>
+    </div>
+
+    <div class="section" id="problemas">
+        <h1>Problemas comunes</h1>
+
+        <ul>
+            <li>Error de conexión.</li>
+            <li>Error de impresora.</li>
+            <li>Stock insuficiente.</li>
+            <li>Login incorrecto.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="practicas">
+        <h1>Buenas prácticas</h1>
+
+        <ul>
+            <li>No compartir cuentas.</li>
+            <li>Respaldar base de datos.</li>
+            <li>Cerrar caja diariamente.</li>
+            <li>Revisar stock constantemente.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="glosario">
+        <h1>Glosario</h1>
+
+        <p>
+            Definiciones importantes utilizadas en el sistema.
+        </p>
+    </div>
+
+    <div class="section" id="creditos">
+        <h1>Créditos</h1>
+
+        <p>
+            Volovan Volo POS - Versión 1.0 SNAPSHOT
+        </p>
+
+        <p>
+            Tecnologías utilizadas:
+            JavaFX, MySQL, BCrypt, HikariCP e iTextPDF.
+        </p>
+    </div>
+
+</div>
 
 </body>
 </html>
