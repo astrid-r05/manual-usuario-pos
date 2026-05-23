@@ -8,124 +8,188 @@
 
 <style>
 
+/* =======================================================
+   CONFIGURACION GENERAL
+======================================================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
 body{
     font-family: Arial, sans-serif;
-    background:#f5f5f5;
-    display:flex;
+    background:#eef4ff;
+    color:#1e3a5f;
 }
 
-/* ===== SIDEBAR ===== */
+/* =======================================================
+   PORTADA SUPERIOR
+======================================================= */
 
-.sidebar{
-    width:280px;
+.hero{
     height:100vh;
-    background:#2c1b12;
+    background:linear-gradient(135deg, #0f4c81, #3b82c4);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
     color:white;
-    position:fixed;
-    overflow-y:auto;
     padding:20px;
 }
 
-.sidebar img{
-    width:100%;
-    border-radius:15px;
-    margin-bottom:20px;
+/* IMAGEN DEL LOGO */
+.hero img{
+    width:220px;
+    margin-bottom:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
+/* TITULO PRINCIPAL */
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+/* SUBTITULO */
+.hero p{
+    font-size:22px;
+    max-width:800px;
+    line-height:1.6;
+}
+
+/* =======================================================
+   BOTON MENU (LAS 3 BARRITAS)
+======================================================= */
+
+.menu-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:1000;
+    background:#0f4c81;
+    color:white;
+    border:none;
+    font-size:28px;
+    width:55px;
+    height:55px;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* =======================================================
+   SIDEBAR / INDICE
+======================================================= */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:-300px;
+    width:300px;
+    height:100%;
+    background:#0b2f4d;
+    padding:25px;
+    transition:0.4s;
+    overflow-y:auto;
+    z-index:999;
+}
+
+/* CLASE QUE ABRE EL SIDEBAR */
+.sidebar.active{
+    left:0;
+}
+
+/* TITULO INDICE */
 .sidebar h2{
+    color:white;
+    margin-bottom:25px;
     text-align:center;
-    margin-bottom:20px;
-    color:#f3d19c;
+    font-size:30px;
 }
 
+/* LINKS DEL INDICE */
 .sidebar a{
     display:block;
     color:white;
     text-decoration:none;
-    padding:10px;
-    border-radius:8px;
-    margin-bottom:5px;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:8px;
     transition:0.3s;
 }
 
+/* EFECTO HOVER */
 .sidebar a:hover{
-    background:#5e3b28;
+    background:#3b82c4;
 }
 
-/* ===== CONTENIDO ===== */
+/* =======================================================
+   CONTENIDO PRINCIPAL
+======================================================= */
 
 .content{
-    margin-left:300px;
-    padding:40px;
-    width:100%;
+    padding:60px 8%;
 }
 
+/* TARJETAS DE CADA MODULO */
 .section{
     background:white;
-    padding:30px;
-    margin-bottom:30px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom:35px;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
-.section h1{
-    color:#5e3b28;
-    margin-bottom:20px;
-}
-
+/* TITULOS DE MODULOS */
 .section h2{
-    color:#8b5e3c;
-    margin-bottom:15px;
+    color:#0f4c81;
+    margin-bottom:20px;
+    font-size:35px;
 }
 
+/* PARRAFOS */
 .section p{
-    line-height:1.7;
+    line-height:1.8;
     margin-bottom:15px;
+    font-size:17px;
 }
 
+/* LISTAS */
 .section ul{
-    margin-left:20px;
-    margin-bottom:15px;
+    margin-left:25px;
+    line-height:1.8;
 }
 
-.section li{
-    margin-bottom:10px;
-}
-
-.placeholder{
-    background:#ddd;
-    height:300px;
-    border-radius:10px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#666;
+/* IMAGENES */
+.section img{
+    width:100%;
     margin-top:20px;
+    border-radius:15px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =======================================================
+   RESPONSIVE
+======================================================= */
 
-@media(max-width:900px){
+@media(max-width:768px){
 
-    .sidebar{
-        width:100%;
-        height:auto;
-        position:relative;
+    .hero h1{
+        font-size:40px;
     }
 
-    .content{
-        margin-left:0;
+    .hero p{
+        font-size:18px;
     }
 
-    body{
-        flex-direction:column;
+    .section h2{
+        font-size:28px;
     }
+
 }
 
 </style>
@@ -133,15 +197,23 @@ body{
 
 <body>
 
-<!-- ===== SIDEBAR ===== -->
+<!-- =======================================================
+     BOTON DE LAS 3 BARRITAS
+======================================================= -->
 
-<div class="sidebar">
+<button class="menu-btn" onclick="toggleMenu()">
+☰
+</button>
 
-    <!-- CAMBIA logo.png POR EL NOMBRE DE TU IMAGEN -->
-    <img src="volo.jpg">
+<!-- =======================================================
+     SIDEBAR / INDICE
+======================================================= -->
 
-    <h2>Volovan Volo POS</h2>
+<div class="sidebar" id="sidebar">
 
+    <h2>Índice</h2>
+
+    <!-- LINKS DEL INDICE -->
     <a href="#introduccion">Introducción</a>
     <a href="#requisitos">Requisitos mínimos</a>
     <a href="#login">Inicio de sesión</a>
@@ -161,235 +233,322 @@ body{
 
 </div>
 
-<!-- ===== CONTENIDO ===== -->
+<!-- =======================================================
+     PORTADA PRINCIPAL
+======================================================= -->
+
+<section class="hero">
+
+    <!-- LOGO PRINCIPAL -->
+    <!-- CAMBIA volo.png SI TU IMAGEN TIENE OTRO NOMBRE -->
+    <img src="volo.png">
+
+    <h1>Volovan Volo POS</h1>
+
+    <p>
+        Manual de usuario del sistema punto de venta
+        para administración de ventas, inventario,
+        clientes, caja y reportes.
+    </p>
+
+</section>
+
+<!-- =======================================================
+     CONTENIDO GENERAL
+======================================================= -->
 
 <div class="content">
 
-    <div class="section" id="introduccion">
-        <h1>Introducción</h1>
+    <!-- =======================================================
+         MODULO INTRODUCCION
+    ======================================================= -->
+
+    <section class="section" id="introduccion">
+
+        <h2>Introducción</h2>
 
         <p>
-            Volovan Volo POS es un sistema de punto de venta diseñado para la operación diaria de una panadería.
-        </p>
-
-        <p>
-            El sistema permite administrar ventas, inventario, clientes, caja, reportes, usuarios y tickets desde una sola plataforma.
+            Volovan Volo POS es un sistema de punto
+            de venta diseñado para la administración
+            diaria de una panadería.
         </p>
 
         <ul>
-            <li>Control de ventas y stock.</li>
-            <li>Administración de caja.</li>
-            <li>Control de clientes y créditos.</li>
-            <li>Reportes y auditoría.</li>
+            <li>Control de ventas.</li>
+            <li>Administración de inventario.</li>
+            <li>Gestión de clientes.</li>
+            <li>Control de caja.</li>
+            <li>Generación de reportes.</li>
         </ul>
-    </div>
 
-    <div class="section" id="requisitos">
-        <h1>Requisitos mínimos</h1>
+    </section>
+
+    <!-- =======================================================
+         MODULO REQUISITOS
+    ======================================================= -->
+
+    <section class="section" id="requisitos">
+
+        <h2>Requisitos mínimos</h2>
 
         <ul>
-            <li>Java 21 compatible con JavaFX.</li>
+            <li>Java 21.</li>
             <li>MySQL instalado.</li>
             <li>Resolución mínima 1366x768.</li>
-            <li>Impresora térmica 58mm u 80mm.</li>
+            <li>Impresora térmica.</li>
         </ul>
-    </div>
 
-    <div class="section" id="login">
-        <h1>Inicio de sesión</h1>
+    </section>
+
+    <!-- =======================================================
+         MODULO LOGIN
+    ======================================================= -->
+
+    <section class="section" id="login">
+
+        <h2>Inicio de sesión</h2>
 
         <p>
-            El usuario debe ingresar su usuario y contraseña para acceder al sistema.
+            El usuario debe ingresar sus credenciales
+            para acceder al sistema.
         </p>
 
         <ul>
             <li>Abrir Volovan Volo POS.</li>
-            <li>Ingresar usuario y contraseña.</li>
-            <li>Presionar "Iniciar Sesión".</li>
+            <li>Ingresar usuario.</li>
+            <li>Ingresar contraseña.</li>
+            <li>Presionar iniciar sesión.</li>
         </ul>
 
-        <div class="placeholder">
-            Captura de pantalla Login
-        </div>
-    </div>
+        <!-- AQUI PUEDES PONER TU IMAGEN -->
+        <!-- EJEMPLO: login.png -->
 
-    <div class="section" id="menu">
-        <h1>Menú principal</h1>
+        <!--
+        <img src="login.png">
+        -->
 
-        <p>
-            El menú principal muestra estadísticas, ventas del día, productos vendidos y accesos rápidos.
-        </p>
+    </section>
 
-        <ul>
-            <li>Ventas</li>
-            <li>Inventario</li>
-            <li>Clientes</li>
-            <li>Caja</li>
-            <li>Configuración</li>
-            <li>Reportes</li>
-        </ul>
-    </div>
+    <!-- =======================================================
+         MODULO MENU PRINCIPAL
+    ======================================================= -->
 
-    <div class="section" id="ventas">
-        <h1>Módulo de ventas</h1>
+    <section class="section" id="menu">
+
+        <h2>Menú principal</h2>
 
         <p>
-            Permite realizar ventas, agregar productos al carrito y procesar pagos.
+            El menú principal muestra accesos rápidos,
+            estadísticas y módulos principales.
         </p>
+
+    </section>
+
+    <!-- =======================================================
+         MODULO VENTAS
+    ======================================================= -->
+
+    <section class="section" id="ventas">
+
+        <h2>Módulo de ventas</h2>
 
         <ul>
             <li>Búsqueda de productos.</li>
-            <li>Control de stock.</li>
+            <li>Carrito de compras.</li>
             <li>Pagos mixtos.</li>
-            <li>Generación de tickets.</li>
+            <li>Tickets.</li>
             <li>Ventas en espera.</li>
         </ul>
 
-        <div class="placeholder">
-            Captura de pantalla Ventas
-        </div>
-    </div>
+    </section>
 
-    <div class="section" id="inventario">
-        <h1>Inventario</h1>
+    <!-- =======================================================
+         MODULO INVENTARIO
+    ======================================================= -->
 
-        <p>
-            El módulo de inventario permite administrar productos y stock.
-        </p>
+    <section class="section" id="inventario">
 
-        <ul>
-            <li>Alta de productos.</li>
-            <li>Ajustes de stock.</li>
-            <li>Categorías.</li>
-            <li>Exportación PDF.</li>
-        </ul>
-    </div>
-
-    <div class="section" id="caja">
-        <h1>Caja</h1>
+        <h2>Inventario</h2>
 
         <p>
-            Permite controlar apertura, movimientos y cierre de caja.
+            Administración de productos y control
+            de stock del sistema.
         </p>
 
-        <ul>
-            <li>Ingresos y retiros.</li>
-            <li>Corte de caja.</li>
-            <li>Conteo físico.</li>
-            <li>Historial de movimientos.</li>
-        </ul>
-    </div>
+    </section>
 
-    <div class="section" id="clientes">
-        <h1>Clientes</h1>
+    <!-- =======================================================
+         MODULO CAJA
+    ======================================================= -->
+
+    <section class="section" id="caja">
+
+        <h2>Caja</h2>
 
         <p>
-            Permite administrar clientes, créditos y pagos.
+            Control de apertura, movimientos
+            y cierre de caja.
         </p>
 
-        <ul>
-            <li>Registro de clientes.</li>
-            <li>Historial.</li>
-            <li>Control de adeudos.</li>
-        </ul>
-    </div>
+    </section>
 
-    <div class="section" id="reportes">
-        <h1>Reportes</h1>
+    <!-- =======================================================
+         MODULO CLIENTES
+    ======================================================= -->
+
+    <section class="section" id="clientes">
+
+        <h2>Clientes</h2>
 
         <p>
-            Genera reportes de ventas, inventario y caja.
+            Registro y administración de clientes,
+            créditos y pagos.
         </p>
 
-        <ul>
-            <li>Ventas.</li>
-            <li>Inventario.</li>
-            <li>Rentabilidad.</li>
-            <li>Créditos.</li>
-        </ul>
-    </div>
+    </section>
 
-    <div class="section" id="usuarios">
-        <h1>Usuarios y permisos</h1>
+    <!-- =======================================================
+         MODULO REPORTES
+    ======================================================= -->
+
+    <section class="section" id="reportes">
+
+        <h2>Reportes</h2>
 
         <p>
-            El sistema permite administrar roles y permisos.
+            Generación de reportes de ventas,
+            inventario y caja.
         </p>
 
-        <ul>
-            <li>Administrador.</li>
-            <li>Supervisor.</li>
-            <li>Cajero.</li>
-        </ul>
-    </div>
+    </section>
 
-    <div class="section" id="configuracion">
-        <h1>Configuración</h1>
+    <!-- =======================================================
+         MODULO USUARIOS
+    ======================================================= -->
+
+    <section class="section" id="usuarios">
+
+        <h2>Usuarios y permisos</h2>
 
         <p>
-            Aquí se administran parámetros del negocio y del sistema.
+            Administración de roles y permisos
+            del sistema.
         </p>
 
-        <ul>
-            <li>Tickets.</li>
-            <li>Correo.</li>
-            <li>Seguridad.</li>
-            <li>Base de datos.</li>
-        </ul>
-    </div>
+    </section>
 
-    <div class="section" id="catalogo">
-        <h1>Catálogo web</h1>
+    <!-- =======================================================
+         MODULO CONFIGURACION
+    ======================================================= -->
+
+    <section class="section" id="configuracion">
+
+        <h2>Configuración</h2>
 
         <p>
-            Permite sincronizar productos con el catálogo web mediante Supabase.
+            Configuración del negocio,
+            tickets y base de datos.
         </p>
-    </div>
 
-    <div class="section" id="problemas">
-        <h1>Problemas comunes</h1>
+    </section>
+
+    <!-- =======================================================
+         MODULO CATALOGO WEB
+    ======================================================= -->
+
+    <section class="section" id="catalogo">
+
+        <h2>Catálogo web</h2>
+
+        <p>
+            Sincronización del sistema
+            con Supabase y catálogo online.
+        </p>
+
+    </section>
+
+    <!-- =======================================================
+         MODULO PROBLEMAS
+    ======================================================= -->
+
+    <section class="section" id="problemas">
+
+        <h2>Problemas comunes</h2>
 
         <ul>
             <li>Error de conexión.</li>
             <li>Error de impresora.</li>
             <li>Stock insuficiente.</li>
-            <li>Login incorrecto.</li>
         </ul>
-    </div>
 
-    <div class="section" id="practicas">
-        <h1>Buenas prácticas</h1>
+    </section>
+
+    <!-- =======================================================
+         MODULO BUENAS PRACTICAS
+    ======================================================= -->
+
+    <section class="section" id="practicas">
+
+        <h2>Buenas prácticas</h2>
 
         <ul>
             <li>No compartir cuentas.</li>
             <li>Respaldar base de datos.</li>
             <li>Cerrar caja diariamente.</li>
-            <li>Revisar stock constantemente.</li>
         </ul>
-    </div>
 
-    <div class="section" id="glosario">
-        <h1>Glosario</h1>
+    </section>
 
-        <p>
-            Definiciones importantes utilizadas en el sistema.
-        </p>
-    </div>
+    <!-- =======================================================
+         MODULO GLOSARIO
+    ======================================================= -->
 
-    <div class="section" id="creditos">
-        <h1>Créditos</h1>
+    <section class="section" id="glosario">
+
+        <h2>Glosario</h2>
 
         <p>
-            Volovan Volo POS - Versión 1.0 SNAPSHOT
+            Definiciones importantes utilizadas
+            dentro del sistema.
         </p>
 
+    </section>
+
+    <!-- =======================================================
+         MODULO CREDITOS
+    ======================================================= -->
+
+    <section class="section" id="creditos">
+
+        <h2>Créditos</h2>
+
         <p>
-            Tecnologías utilizadas:
-            JavaFX, MySQL, BCrypt, HikariCP e iTextPDF.
+            Sistema desarrollado con JavaFX,
+            MySQL y tecnologías complementarias.
         </p>
-    </div>
+
+    </section>
 
 </div>
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =======================================================
+   FUNCION PARA ABRIR Y CERRAR EL SIDEBAR
+======================================================= */
+
+function toggleMenu(){
+
+    document.getElementById("sidebar")
+    .classList.toggle("active");
+
+}
+
+</script>
 
 </body>
 </html>
