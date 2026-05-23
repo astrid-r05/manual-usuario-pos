@@ -223,7 +223,7 @@ body{
     <a href="#requisitos">Requisitos mínimos</a>
     <a href="#login">Inicio de sesión</a>
     <a href="#menu">Menú principal</a>
-    <a href="#ventas">Módulo de ventas</a>
+    <a href="#ventas">Ventas/Caja</a>
     <a href="#inventario">Inventario</a>
     <a href="#caja">Caja</a>
     <a href="#clientes">Clientes</a>
@@ -357,15 +357,50 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
 
     <section class="section" id="ventas">
 
-        <h2>Módulo de ventas</h2>
-
+        <h2>Ventas/Caja</h2>
+<video controls>
+    <source src="Caja.mp4" type="video/mp4">
+</video>
+       <h3>Buscar productos</h3>
         <ul>
-            <li>Búsqueda de productos.</li>
-            <li>Carrito de compras.</li>
-            <li>Pagos mixtos.</li>
-            <li>Tickets.</li>
-            <li>Ventas en espera.</li>
+            <li>•	Use el campo Buscar producto para filtrar por nombre o código de barras.</li>
+            <li>•	Seleccione una categoría para limitar los productos visibles.</li>
         </ul>
+
+       <h3>Historial, Ingreso/Salida de dinero, ventas en espera</h3>
+        <ul>
+            <li>Historial muestra ventas del día y permite abrir el detalle por doble clic.</li>
+            <li>Desde el detalle se puede generar prefactura.</li>
+            <li>Cancelar una venta devuelve stock, cambia estado a CANCELADA y registra auditoría.</li>
+            <li>El campo de Ingresos o salida de dinero requiere agregar una cantidad y motivo.</li>
+            <li>En espera guarda el carrito con una etiqueta y permite recuperarlo después.</li>
+        </ul>
+
+         <h3>Realizar venta</h3>
+        <ul>
+            <li>Si el producto no tiene stock, el sistema bloquea la venta de ese producto.</li>
+            <li>El carrito permite aumentar o reducir cantidades.</li>
+            <li>El sistema calcula subtotal, impuestos y total con la configuración fiscal vigente.</li>
+           <li>El sistema guarda la venta, descuenta stock, registra el pago, abre el cajón si está configurado y puede enviar el ticket por correo si el correo está activo.</li>
+       </ul>
+       
+           <h3>Pasos:</h3>
+         <ul>
+           <li>1. Haga clic en el producto o en el botón + para agregarlo al carrito.</li>
+           <li>2. Presione Cobrar.</li>
+         <li>3. Seleccione método de pago.</li>
+          <li>4. Elija Generar e imprimir o Venta sin ticket.</li>
+          <li>5. Confirme la venta.</li>
+        </ul>
+       
+       <h3>Devoluciones</h3>
+       <video controls>
+    <source src="Devoluciones.mp4" type="video/mp4">
+</video>
+        <ul>
+            <li>•	Devolución permite seleccionar líneas disponibles y devolver cantidades parciales o completas.</li>
+        </ul>
+       
 
     </section>
 
