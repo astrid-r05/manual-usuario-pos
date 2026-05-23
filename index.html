@@ -11,7 +11,6 @@
 /* =======================================================
    CONFIGURACION GENERAL
 ======================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -28,7 +27,6 @@ body{
 /* =======================================================
    PORTADA SUPERIOR
 ======================================================= */
-
 .hero{
     height:100vh;
     background:linear-gradient(135deg, #0f4c81, #6fb1fc);
@@ -67,7 +65,6 @@ body{
 /* =======================================================
    BOTON MENU (LAS 3 BARRITAS)
 ======================================================= */
-
 .menu-btn{
     position:fixed;
     top:20px;
@@ -87,7 +84,6 @@ body{
 /* =======================================================
    SIDEBAR / INDICE
 ======================================================= */
-
 .sidebar{
     position:fixed;
     top:0;
@@ -133,7 +129,6 @@ body{
 /* =======================================================
    CONTENIDO PRINCIPAL
 ======================================================= */
-
 .content{
     padding:60px 8%;
 }
@@ -156,7 +151,6 @@ body{
 
    
 /* SUBTITULOS */
-
 .section h3{
     color:#3b82c4;
     margin-top:35px;
@@ -188,7 +182,6 @@ body{
 /* =======================================================
    RESPONSIVE
 ======================================================= */
-
 @media(max-width:768px){
 
     .hero h1{
@@ -213,7 +206,6 @@ body{
 <!-- =======================================================
      BOTON DE LAS 3 BARRITAS
 ======================================================= -->
-
 <button class="menu-btn" onclick="toggleMenu()">
 ☰
 </button>
@@ -221,7 +213,6 @@ body{
 <!-- =======================================================
      SIDEBAR / INDICE
 ======================================================= -->
-
 <div class="sidebar" id="sidebar">
 
     <h2>Índice</h2>
@@ -260,7 +251,6 @@ body{
 
     <p>
         Manual de usuario del sistema punto de venta.
-      
     </p>
 
 </section>
@@ -268,13 +258,11 @@ body{
 <!-- =======================================================
      CONTENIDO GENERAL
 ======================================================= -->
-
 <div class="content">
 
     <!-- =======================================================
          MODULO INTRODUCCION
     ======================================================= -->
-
     <section class="section" id="introduccion">
 
         <h2>Introducción</h2>
@@ -306,18 +294,24 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
         <h2>Requisitos mínimos</h2>
 
         <ul>
-            <li>Java 21.</li>
-            <li>MySQL instalado.</li>
-            <li>Resolución mínima 1366x768.</li>
-            <li>Impresora térmica.</li>
+            <li>JJava 21 o compatible con JavaFX 21.</li>
+            <li>Base de datos: MySQL con base pospanaderia. La conexión predeterminada apunta a localhost:3306.</li>
+           <li>Impresora: Impresora compatible con tickets de 58 mm u 80 mm. La apertura de cajón usa impresora térmica/ESC/POS.</li>
+           <li>Resolución mínima 1366x768 o superior.</li>
+            <li>Equipo de escritorio con acceso a red local.</li>
         </ul>
 
+       <h3>Configuración de base de datos</h3>
+
+         <ul>
+            <li>La conexión puede ajustarse con propiedades del sistema, variables POS_DB_URL, POS_DB_USER, POS_DB_PASSWORD o el archivo local db.local.properties.</li>
+        </ul>
+       
     </section>
 
     <!-- =======================================================
          MODULO LOGIN
     ======================================================= -->
-
     <section class="section" id="login">
 
         <h2>Inicio de sesión</h2>
@@ -328,11 +322,13 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
         </p>
 
         <ul>
-            <li>Abrir Volovan Volo POS.</li>
-            <li>Ingresar usuario.</li>
-            <li>Ingresar contraseña.</li>
-            <li>Presionar iniciar sesión.</li>
+            <li>1. Abra la aplicación Volovan Volo POS.</li>
+            <li>2. Ingrese usuario y contraseña.</li>
+            <li>3. Presionar iniciar sesión.</li>
+            <li>4. Si no existe caja abierta, el sistema envía a Apertura de Caja.</li>
+            <li>5. Si ya existe caja abierta, el sistema abre el Menú Principal.</li>
         </ul>
+       
 
         <!-- AQUI PUEDES PONER TU IMAGEN -->
         <!-- EJEMPLO: login.png -->
