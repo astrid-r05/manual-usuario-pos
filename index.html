@@ -337,17 +337,18 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
             para acceder al sistema.
         </p>
 
-        <ul>
-            <li>1. Abra la aplicación Volovan Volo POS.</li>
-            <li>2. Ingrese usuario y contraseña.</li>
-            <li>3. Presionar iniciar sesión.</li>
-            <li>4. Si no existe caja abierta, el sistema envía a Apertura de Caja.</li>
-            <li>5. Si ya existe caja abierta, el sistema abre el Menú Principal.</li>
-        </ul>
+        <ol>
+            <li>Abra la aplicación Volovan Volo POS.</li>
+            <li>Ingrese usuario y contraseña.</li>
+            <li>Presionar iniciar sesión.</li>
+            <li>Si no existe caja abierta, el sistema envía a Apertura de Caja.</li>
+            <li>Si ya existe caja abierta, el sistema abre el Menú Principal.</li>
+        </ol>
        
        <img src="login-nuevo.jpeg"> 
-          <img src="AperturaCaja.png"> 
-
+          <!-- =======================================================
+                     <img src="AperturaCaja.png"> 
+       -->
     </section>
 
     <!-- =======================================================
@@ -400,7 +401,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
            <li>El sistema guarda la venta, descuenta stock, registra el pago, abre el cajón si está configurado y puede enviar el ticket por correo si el correo está activo.</li>
        </ul>
        
-           <h3>Pasos:</h3>
+           <h3>Pasos para una venta:</h3>
          <ol>
            <li>Haga clic en el producto o en el botón + para agregarlo al carrito.</li>
            <li>Presione Cobrar.</li>
@@ -529,20 +530,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
 
     </section>
 
-    <!-- =======================================================
-         MODULO REPORTES
-    ======================================================= -->
 
-    <section class="section" id="reportes">
-
-        <h2>Reportes</h2>
-
-        <p>
-            Generación de reportes de ventas,
-            inventario y caja.
-        </p>
-
-    </section>
 
     <!-- =======================================================
          MODULO COMPRAS
@@ -553,10 +541,15 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
         <h2>Compras</h2>
 
         <p>
-            Control de apertura, movimientos
-            y cierre de caja.
+            l módulo de Compras te permite registrar las entradas de mercancía al inventario cuando recibes productos de proveedores.
+           Desde aquí puedes:
         </p>
-
+   <ul>
+            <li>Registrar una nueva compra seleccionando el proveedor y los productos recibidos</li> 
+            <li>Indicar la cantidad y el costo de cada artículo</li>
+            <li>El stock del inventario se actualiza automáticamente al confirmar la compra</li>
+            <li>Consultar el historial de compras realizadas</li>
+       </ul>
     </section>
 
     <!-- =======================================================
@@ -568,12 +561,43 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
         <h2>Pedidos</h2>
 
         <p>
-            Control de apertura, movimientos
-            y cierre de caja.
+            El módulo de Pedidos está diseñado para gestionar los pedidos anticipados de clientes que deben prepararse con tiempo.
+           Este apartado incluye botones de acción como: Confirmar, en producción, listo, entregar, cancelar, imprimir comprobante.
         </p>
+       
+       <h3>Registrar un pedido nuevo (panel izquierdo):</h3>
+   <ol>
+            <li>Selecciona el cliente (debe estar registrado en el sistema)</li> 
+            <li>Elige la fecha y hora de entrega</li>
+            <li>Selecciona el producto y la cantidad; haz clic en Añadir a la lista</li>
+            <li>Puedes agregar varios productos al mismo pedido</li>
+            <li>Ingresa el anticipo recibido (si aplica)</li>
+            <li>Escribe instrucciones especiales para el pastelero o decoración (campo de notas)</li>
+            <li>Haz clic en Guardar y Registrar Pedido</li>
+       </ol>
 
     </section>
+   
+    <!-- =======================================================
+         MODULO REPORTES
+    ======================================================= -->
 
+    <section class="section" id="reportes">
+
+        <h2>Reportes</h2>
+
+        <p>
+  El módulo de Reportes es el centro de análisis del negocio. Consulta ventas históricas, estadísticas por cajero, movimientos de inventario y más.
+        </p>
+
+       <h3>Filtros de busqueda</h3>
+       
+         <p>
+            Cuenta con filtros de búsqueda por: Fecha, tipo (ventas, compras, todo) y estado (completa, devuelta, cancelada, parcial).
+Además de contar con accesos rápidos en rangos de fechas.       
+         </p>
+
+    </section>
     <!-- =======================================================
          MODULO CAJA
     ======================================================= -->
