@@ -80,7 +80,28 @@ body{
     cursor:pointer;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
+/* =======================================================
+   OVERLAY OSCURO
+======================================================= */
 
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    opacity:0;
+    visibility:hidden;
+    transition:0.3s;
+    z-index:998;
+}
+
+/* CUANDO ESTA ACTIVO */
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
 /* =======================================================
    SIDEBAR / INDICE
 ======================================================= */
@@ -193,6 +214,53 @@ video{
     border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
+
+   /* =======================================================
+   TABLAS
+======================================================= */
+
+.table-container{
+    overflow-x:auto;
+    margin-top:20px;
+}
+
+.problems-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ENCABEZADOS */
+.problems-table th{
+    background:#dbeafe;
+    color:#0f4c81;
+    padding:14px;
+    text-align:left;
+    font-size:15px;
+}
+
+/* CELDAS */
+.problems-table td{
+    padding:14px;
+    border-bottom:1px solid #dbeafe;
+    line-height:1.6;
+    font-size:14px;
+    color:#1e3a5f;
+}
+
+/* EFECTO HOVER */
+.problems-table tr:hover{
+    background:#f4f9ff;
+}
+
+/* PRIMERA COLUMNA */
+.problems-table td:first-child{
+    font-weight:bold;
+    color:#0f4c81;
+}
 /* =======================================================
    RESPONSIVE
 ======================================================= */
@@ -227,7 +295,8 @@ video{
 <!-- =======================================================
      SIDEBAR / INDICE
 ======================================================= -->
-<div class="sidebar" id="sidebar">
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+   <div class="sidebar" id="sidebar">
 
     <h2>Índice</h2>
 
@@ -238,7 +307,7 @@ video{
     <a href="#menu">Menú principal</a>
     <a href="#ventas">Ventas/Caja</a>
     <a href="#inventario">Inventario</a>
-    <a href="#usuarios">Empleados</a>
+    <a href="#empleados">Empleados</a>
     <a href="#clientes">Clientes</a>
     <a href="#compras">Compras</a>
     <a href="#pedidos">Pedidos</a>
@@ -446,7 +515,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
        <h3>Indicaciones:</h3>
          <ol>
            <li>Entrar a inventario.</li>
-           <li>Usar buscar por niombre, categoría o estado</li>
+           <li>Usar buscar por nombre, categoría o estado</li>
           <li>Use las acciones de fila para editar, ajustar stock, consultar historial o desactivar.</li>
         </ol>
        <!-- video de inventario -->
@@ -687,42 +756,155 @@ Es una herramienta de control interno para garantizar la transparencia en la ope
         <h2>Configuración</h2>
 
         <p>
-            Configuración del negocio,
-            tickets y base de datos.
+          El módulo de Configuración está disponible solo para el administrador. 
+         Desde aquí se personaliza todo el comportamiento del sistema. Usa el botón Guardar cambios para aplicar cualquier modificación.
         </p>
 
-    </section>
+          <video controls>
+    <source src="Configuracicon.mp4" type="video/mp4">
+</video>
 
-    <!-- =======================================================
-         MODULO CATALOGO WEB
-    ======================================================= -->
+        <h3>General</h3>
+       <p>
+          Datos del negocio: nombre, slogan, teléfono, correo, sitio web, dirección, ciudad, RFC, moneda, zona horaria, horario de operación (días y horas), 
+          límite de crédito global para clientes y número de sucursal/caja. 
+        </p>
 
-    <section class="section" id="catalogo">
+        <h3>Fiscal</h3>
+       <p>
+           Configuración del RFC, régimen fiscal y datos para facturación o emisión de comprobantes.
+        </p>
 
-        <h2>Catálogo web</h2>
+        <h3>Tickets</h3>
+       <p>
+           Personaliza el contenido del ticket impreso, e incluye vista previa en tiempo real.
+        </p>
 
+        <h3>Impresión</h3>
         <p>
-            Sincronización del sistema
-            con Supabase y catálogo online.
-        </p>
+    Genera e imprime etiquetas con código de barras o QR para tus productos.
+</p>
+<ul>
+    <li>Busca productos por nombre, SKU o código de barras.</li>
+    <li>Selecciona el tipo de código y qué debe contener el QR.</li>
+    <li>Marca los productos que quieres etiquetar para ver la vista previa o imprimir.</li>
+</ul>
 
+        <h3>Caja</h3>
+<p>
+    Configura el cajón de dinero físico conectado a la impresora térmica.
+</p>
+<ul>
+    <li>Apertura automática al vender:El POS envía el pulso al cajón al completar un cobro.</li>
+    <li>Puerto del cajón:Vía impresora térmica (ESC/POS).</li>
+    <li>Pulso:Selecciona el pin de activación (Pulso 1 pin 2).</li>
+</ul>
+
+        <h3>Correo</h3>
+Configura el envío de tickets y reportes por correo electrónico.
+</p>
+        <h3>Sistema</h3>
+  <p>
+        Estado de la base de datos y opciones de respaldo, como: Estado de conexión, respaldo SQL, sucursales y cajas
+        </p>
+        <h3>Catalogo Web</h3>
+  <p>
+          Conecta el POS con Supabase para publicar un catálogo en línea sin reemplazar la base de datos local.
+        </p>
+        <h3>Promociones</h3>
+         <p>
+           Crea reglas de descuento por producto, categoría, horario y vigencia.
+        </p>
     </section>
+
+ 
 
     <!-- =======================================================
          MODULO PROBLEMAS
     ======================================================= -->
+<section class="section" id="problemas">
 
-    <section class="section" id="problemas">
+    <h2>Problemas comunes</h2>
 
-        <h2>Problemas comunes</h2>
+    <p>
+        A continuación se muestran algunos problemas frecuentes del sistema y sus posibles soluciones.
+    </p>
 
-        <ul>
-            <li>Error de conexión.</li>
-            <li>Error de impresora.</li>
-            <li>Stock insuficiente.</li>
-        </ul>
+    <div class="table-container">
 
-    </section>
+        <table class="problems-table">
+
+            <thead>
+                <tr>
+                    <th>Problema</th>
+                    <th>Revisión recomendada</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Error de conexión</td>
+                    <td>
+                        Verifique MySQL, host, puerto, base <b>pospanaderia</b>,
+                        usuario, contraseña y variables
+                        POS_DB_URL / POS_DB_USER / POS_DB_PASSWORD.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Error impresora</td>
+                    <td>
+                        Revise impresora seleccionada, papel 58/80 mm,
+                        conexión USB/red y permisos del sistema operativo.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>No abre cajón</td>
+                    <td>
+                        Active cajón en Configuración > Caja y confirme
+                        compatibilidad ESC/POS.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Login incorrecto</td>
+                    <td>
+                        Verifique usuario activo, contraseña y rol asignado.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Stock insuficiente</td>
+                    <td>
+                        Revise existencias en Inventario y ajuste stock si corresponde.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>No exporta respaldo</td>
+                    <td>
+                        Instale o agregue <b>mysqldump</b> al PATH y revise permisos
+                        de escritura.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Catálogo web no conecta</td>
+                    <td>
+                        Use URL HTTPS válida, anon key pública y revise permisos
+                        de Supabase.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
 
     <!-- =======================================================
          MODULO BUENAS PRACTICAS
@@ -732,44 +914,20 @@ Es una herramienta de control interno para garantizar la transparencia en la ope
 
         <h2>Buenas prácticas</h2>
 
-        <ul>
-            <li>No compartir cuentas.</li>
-            <li>Respaldar base de datos.</li>
-            <li>Cerrar caja diariamente.</li>
-        </ul>
+      <ul>
+    <li>Cambiar credenciales iniciales antes de operar con datos reales.</li>
+    <li>Crear usuarios individuales; no compartir cuentas entre cajeros.</li>
+    <li>Mantener permisos mínimos por rol y solicitar autorización para acciones sensibles.</li>
+    <li>Abrir caja al inicio del turno y cerrar caja al final del día.</li>
+    <li>Registrar motivos claros en retiros, ingresos, cancelaciones y devoluciones.</li>
+    <li>Revisar stock bajo diariamente y ajustar solo con autorización.</li>
+    <li>Exportar respaldos SQL con frecuencia y guardarlos fuera del equipo principal.</li>
+    <li>Probar impresora y correo antes de iniciar operación.</li>
+    <li>No guardar service role key de Supabase en el POS.</li>
+</ul>
 
     </section>
-
-    <!-- =======================================================
-         MODULO GLOSARIO
-    ======================================================= -->
-
-    <section class="section" id="glosario">
-
-        <h2>Glosario</h2>
-
-        <p>
-            Definiciones importantes utilizadas
-            dentro del sistema.
-        </p>
-
-    </section>
-
-    <!-- =======================================================
-         MODULO CREDITOS
-    ======================================================= -->
-
-    <section class="section" id="creditos">
-
-        <h2>Créditos</h2>
-
-        <p>
-            Sistema desarrollado con JavaFX,
-            MySQL y tecnologías complementarias.
-        </p>
-
-    </section>
-
+   
 </div>
 
 <!-- =======================================================
@@ -787,8 +945,24 @@ function toggleMenu(){
     document.getElementById("sidebar")
     .classList.toggle("active");
 
+    document.getElementById("overlay")
+    .classList.toggle("active");
+
 }
 
+/* =========================================
+   CERRAR MENU
+========================================= */
+
+function closeMenu(){
+
+    document.getElementById("sidebar")
+    .classList.remove("active");
+
+    document.getElementById("overlay")
+    .classList.remove("active");
+
+}
 </script>
 
 </body>
