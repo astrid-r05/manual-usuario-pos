@@ -80,7 +80,28 @@ body{
     cursor:pointer;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
+/* =======================================================
+   OVERLAY OSCURO
+======================================================= */
 
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    opacity:0;
+    visibility:hidden;
+    transition:0.3s;
+    z-index:998;
+}
+
+/* CUANDO ESTA ACTIVO */
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
 /* =======================================================
    SIDEBAR / INDICE
 ======================================================= */
@@ -193,6 +214,52 @@ video{
     border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
+   /* =======================================================
+   TABLAS
+======================================================= */
+
+.table-container{
+    overflow-x:auto;
+    margin-top:20px;
+}
+
+.problems-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ENCABEZADOS */
+.problems-table th{
+    background:#dbeafe;
+    color:#0f4c81;
+    padding:14px;
+    text-align:left;
+    font-size:15px;
+}
+
+/* CELDAS */
+.problems-table td{
+    padding:14px;
+    border-bottom:1px solid #dbeafe;
+    line-height:1.6;
+    font-size:14px;
+    color:#1e3a5f;
+}
+
+/* EFECTO HOVER */
+.problems-table tr:hover{
+    background:#f4f9ff;
+}
+
+/* PRIMERA COLUMNA */
+.problems-table td:first-child{
+    font-weight:bold;
+    color:#0f4c81;
+}
 /* =======================================================
    RESPONSIVE
 ======================================================= */
@@ -227,7 +294,9 @@ video{
 <!-- =======================================================
      SIDEBAR / INDICE
 ======================================================= -->
-<div class="sidebar" id="sidebar">
+<!-- OVERLAY OSCURO -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+   <div class="sidebar" id="sidebar">
 
     <h2>Índice</h2>
 
@@ -238,7 +307,7 @@ video{
     <a href="#menu">Menú principal</a>
     <a href="#ventas">Ventas/Caja</a>
     <a href="#inventario">Inventario</a>
-    <a href="#usuarios">Empleados</a>
+    <a href="#empleados">Empleados</a>
     <a href="#clientes">Clientes</a>
     <a href="#compras">Compras</a>
     <a href="#pedidos">Pedidos</a>
@@ -446,7 +515,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
        <h3>Indicaciones:</h3>
          <ol>
            <li>Entrar a inventario.</li>
-           <li>Usar buscar por niombre, categoría o estado</li>
+           <li>Usar buscar por nombre, categoría o estado.</li>
           <li>Use las acciones de fila para editar, ajustar stock, consultar historial o desactivar.</li>
         </ol>
        <!-- video de inventario -->
@@ -754,17 +823,94 @@ Configura el envío de tickets y reportes por correo electrónico.
          MODULO PROBLEMAS
     ======================================================= -->
 
-    <section class="section" id="problemas">
+   <section class="section" id="problemas">
 
-        <h2>Problemas comunes</h2>
+    <h2>Problemas comunes</h2>
 
-        <ul>
-            <li>Error de conexión.</li>
-            <li>Error de impresora.</li>
-            <li>Stock insuficiente.</li>
-        </ul>
+    <p>
+        A continuación se muestran algunos problemas frecuentes del sistema y sus posibles soluciones.
+    </p>
 
-    </section>
+    <div class="table-container">
+
+        <table class="problems-table">
+
+            <thead>
+                <tr>
+                    <th>Problema</th>
+                    <th>Revisión recomendada</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Error de conexión</td>
+                    <td>
+                        Verifique MySQL, host, puerto, base <b>pospanaderia</b>,
+                        usuario, contraseña y variables
+                        POS_DB_URL / POS_DB_USER / POS_DB_PASSWORD.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Error impresora</td>
+                    <td>
+                        Revise impresora seleccionada, papel 58/80 mm,
+                        conexión USB/red y permisos del sistema operativo.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>No abre cajón</td>
+                    <td>
+                        Active cajón en Configuración > Caja y confirme
+                        compatibilidad ESC/POS.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Login incorrecto</td>
+                    <td>
+                        Verifique usuario activo, contraseña y rol asignado.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Stock insuficiente</td>
+                    <td>
+                        Revise existencias en Inventario y ajuste stock si corresponde.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>No exporta respaldo</td>
+                    <td>
+                        Instale o agregue <b>mysqldump</b> al PATH y revise permisos
+                        de escritura.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Catálogo web no conecta</td>
+                    <td>
+                        Use URL HTTPS válida, anon key pública y revise permisos
+                        de Supabase.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- OPCIONAL: IMAGEN DE REFERENCIA -->
+    <!--
+    <img src="problemas-comunes.png">
+    -->
+
+</section>
 
     <!-- =======================================================
          MODULO BUENAS PRACTICAS
@@ -805,6 +951,23 @@ function toggleMenu(){
 
     document.getElementById("sidebar")
     .classList.toggle("active");
+
+    document.getElementById("overlay")
+    .classList.toggle("active");
+
+}
+
+/* =========================================
+   CERRAR MENU
+========================================= */
+
+function closeMenu(){
+
+    document.getElementById("sidebar")
+    .classList.remove("active");
+
+    document.getElementById("overlay")
+    .classList.remove("active");
 
 }
 
