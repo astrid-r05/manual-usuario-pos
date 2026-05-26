@@ -240,9 +240,10 @@ video{
     <a href="#inventario">Inventario</a>
     <a href="#usuarios">Empleados</a>
     <a href="#clientes">Clientes</a>
-    <a href="#clientes">Compras</a>
-    <a href="#clientes">Pedidos</a>
+    <a href="#compras">Compras</a>
+    <a href="#pedidos">Pedidos</a>
     <a href="#reportes">Reportes</a>
+    <a href="#auditoria">Auditoria</a>
     <a href="#caja">Caja</a>
     <a href="#configuracion">Configuración</a>
     <a href="#catalogo">Catálogo web</a>
@@ -452,7 +453,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
        <video controls>
     <source src="inventario.mp4" type="video/mp4">
 </video>
-        <img src="reporte-inventario.png"> 
+        <img src="pdf-inventario.png"> 
 
        <h3>Agregar producto</h3>
        <p>
@@ -542,6 +543,12 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
 
         <p>
             l módulo de Compras te permite registrar las entradas de mercancía al inventario cuando recibes productos de proveedores.
+        </p> 
+       
+       <!-- imagen compras -->
+          <img src="Compras.png"> 
+       
+          <p>
            Desde aquí puedes:
         </p>
    <ul>
@@ -550,6 +557,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
             <li>El stock del inventario se actualiza automáticamente al confirmar la compra</li>
             <li>Consultar el historial de compras realizadas</li>
        </ul>
+       
     </section>
 
     <!-- =======================================================
@@ -565,7 +573,7 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
            Este apartado incluye botones de acción como: Confirmar, en producción, listo, entregar, cancelar, imprimir comprobante.
         </p>
        
-       <h3>Registrar un pedido nuevo (panel izquierdo):</h3>
+       <h3>Registrar un pedido nuevo:</h3>
    <ol>
             <li>Selecciona el cliente (debe estar registrado en el sistema)</li> 
             <li>Elige la fecha y hora de entrega</li>
@@ -575,6 +583,10 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
             <li>Escribe instrucciones especiales para el pastelero o decoración (campo de notas)</li>
             <li>Haz clic en Guardar y Registrar Pedido</li>
        </ol>
+
+        <!-- imagen pedidos -->
+          <img src="Pedidos.png"> 
+
 
     </section>
    
@@ -591,11 +603,31 @@ El objetivo del sistema es controlar ventas, cobros, inventario, clientes, caja,
         </p>
 
        <h3>Filtros de busqueda</h3>
-       
          <p>
             Cuenta con filtros de búsqueda por: Fecha, tipo (ventas, compras, todo) y estado (completa, devuelta, cancelada, parcial).
 Además de contar con accesos rápidos en rangos de fechas.       
          </p>
+
+         <p>
+       Contiene pestañas de visualización:
+        </p>
+   <ul>
+            <li>Gráficas de productos: Por cantidad, ingresos, y tablas</li> 
+            <li>Ventas detalladas</li>
+            <li>Por cajero</li>
+            <li>Por hora</li>
+            <li>Rentabilidad</li> 
+            <li>Créditos</li>
+            <li>Inventario</li>
+            <li>Compras</li>
+            <li>Pedidos</li>
+       </ul>
+
+        <!--VIDEO REPORTES -->
+
+               <!--imagen pdf reporte -->
+          <p>Genera un pdf con todos los datos que hayas seleccionado.
+        </p>
 
     </section>
     <!-- =======================================================
@@ -605,6 +637,31 @@ Además de contar con accesos rápidos en rangos de fechas.
     <section class="section" id="caja">
 
         <h2>Caja</h2>
+<p>
+    El Corte de Caja se realiza al final de cada jornada. 
+Aquí verificas que el dinero en caja coincida con lo que el sistema registró.
+</p>
+
+<h3>Pestañas del Corte de Caja</h3>
+  <li>Dashboard: Resumen general</li>
+  <li>Conteo físico: Aquí cuentas el efectivo real que hay en caja y lo comparas con lo que el sistema espera. </li>
+  <li>Movimientos: Tabla con todos los ingresos y salidas de efectivo registrados durante la jornada. </li>
+  <li>Cancelaciones: Lista de todas las devoluciones y cancelaciones de ventas realizadas durante la jornada. </li>
+  <li>Top productos: Muestra los productos más vendidos durante la jornada de esa caja específica. </li>
+  <li>Historial: Tabla con todos los cortes de caja anteriores. </li>
+   <li>Exportar PDF: Genera el reporte del corte en PDF para guardar o imprimir.</li>
+   <li>Cerrar Caja: Cierra la caja oficialmente. </li>
+        <!-- VIDEO corte caja -->
+          
+    </section>
+
+    <!-- =======================================================
+         MODULO AUDITORIA
+    ======================================================= -->
+
+    <section class="section" id="auditoria">
+
+        <h2>Auditoria</h2>
 
         <p>
             Control de apertura, movimientos
